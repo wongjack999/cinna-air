@@ -1,0 +1,85 @@
+.cinna-kit {
+  --ck-ink: #3a2942;
+  --ck-muted: #654e6a;
+  --ck-blue: #4c72a0;
+  --ck-finished: #386c65;
+  --ck-radius: 16px;
+  --ck-duration: 240ms;
+  color: var(--ck-ink);
+  font: 400 14px/1.4 "Avenir Next", "PingFang HK", "Noto Sans TC", system-ui, sans-serif;
+}
+.cinna-kit *, .cinna-kit *::before, .cinna-kit *::after { box-sizing: border-box; }
+.cinna-kit [hidden] { display: none; }
+.cinna-kit strong { font-weight: 500; }
+.cinna-kit :is(h2,h3,p,dd,dl,ol) { margin: 0; }
+.cinna-kit button { font: inherit; color: inherit; cursor: pointer; }
+.cinna-kit button:focus-visible { outline: 2px solid #79527e; outline-offset: 3px; }
+.cinna-kit svg { width: 18px; height: 18px; flex: none; display: block; }
+.ck-glass { border: 1px solid #fffc; background: #faf5ffff; box-shadow: inset 0 1px 0 #fff9, 0 5px 18px #66547820; border-radius: var(--ck-radius); }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ck-glass {
+    background: linear-gradient(135deg,#ffffffdf,#f7eeffc4 64%,#f5ddefb8);
+    -webkit-backdrop-filter: blur(17px) saturate(122%);
+    backdrop-filter: blur(17px) saturate(122%);
+  }
+}
+.ck-topbar, .ck-brand, .ck-journey-button { display: flex; align-items: center; gap: 8px; }
+.ck-topbar { justify-content: space-between; gap: 10px; }
+.ck-brand { font-size: 16px; font-weight: 500; white-space: nowrap; }
+.ck-brand-icon { width: 34px; height: 34px; display: grid; place-items: center; flex: none; border-radius: 11px; background: #fbe8f4; color: #995478; border: 1px solid #fff; }
+.ck-brand-icon svg { transform: rotate(-24deg); }
+.ck-journey-button { min-height: 44px; padding: 7px 10px; font-size: 13px; }
+.ck-journey-button svg { color: var(--ck-blue); }
+.ck-progress { border-radius: 17px; padding: 11px 12px; }
+.ck-progress :is(.ck-progress-head,.ck-progress-track) { display: flex; align-items: center; gap: 5px; }
+.ck-progress-head { justify-content: space-between; }
+.ck-progress h3 { font-size: 16px; font-weight: 400; }
+.ck-progress [data-ck-progress-text] { color: var(--ck-muted); font-size: 12px; white-space: nowrap; }
+.ck-progress-track { margin-top: 10px; }
+.ck-progress-track i { flex: 1; height: 5px; min-width: 0; border-radius: 10px; background: #d8cede; }
+.ck-progress-track i[data-status="current"] { background: #bd71a6; }
+.ck-progress-track i[data-status="done"] { background: #81a7a5; }
+.ck-cta {
+  position: relative; width: 100%; min-height: 47px; display: grid; place-items: center;
+  padding: 7px 38px; border: 1px solid #fff9; border-radius: var(--ck-radius);
+  background: linear-gradient(120deg,#914c80,#a45787); color: #fff !important;
+  box-shadow: inset 0 1px 0 #fff5, 0 4px 11px #854b833f;
+}
+.ck-cta[data-state="after"] { background: linear-gradient(120deg,#4c699b,#4e7ba9); }
+.ck-cta svg { position: absolute; right: 13px; }
+.ck-cta:hover:not(:disabled) { filter: brightness(1.08); }
+.ck-cta:active:not(:disabled) { transform: translateY(1px); }
+.ck-cta:disabled { opacity: .49; cursor: default; }
+.ck-toast { display: flex; align-items: center; gap: 9px; padding: 8px; }
+.ck-toast:not([hidden]) { animation: ck-appear var(--ck-duration) ease-out both; }
+.ck-toast-icon { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; background: #dff3ec; color: var(--ck-finished); }
+.ck-toast p { font-size: 12px; color: var(--ck-muted); }
+.ck-toast > button { min-width: 44px; min-height: 44px; margin-inline-start: auto; display: grid; place-items: center; border: 0; background: transparent; border-radius: 11px; }
+.ck-tooltip { position: relative; width: max-content; max-width: 100%; margin-inline: auto; }
+.ck-tooltip > button { display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 7px 10px; }
+.ck-tooltip > span { position: absolute; z-index: 1; top: calc(100% + 6px); left: 50%; transform: translateX(-50%); width: max-content; max-width: min(225px, calc(100vw - 32px)); padding: 7px 10px; background: #5a4160; color: #fff; border-radius: 9px; font-size: 12px; }
+.ck-tooltip > span::before { content: ""; position: absolute; bottom: 100%; left: calc(50% - 5px); border: 5px solid transparent; border-bottom-color: #5a4160; }
+.ck-pass { border: 1px solid #e9dbea; border-radius: 17px; background: #fff; overflow: hidden; box-shadow: 0 6px 16px #66547827; }
+.ck-pass-head, .ck-pass-route { display: flex; justify-content: space-between; align-items: center; }
+.ck-pass-head { padding: 8px 10px; color: #69446b; background: #f2e5f5; }
+.ck-pass-route { gap: 8px; padding: 11px 10px; }
+.ck-pass-route strong { display: block; font-weight: 300; font-size: 29px; line-height: 1; letter-spacing: -.04em; }
+.ck-pass-route small { font-size: 11px; color: var(--ck-muted); }
+.ck-pass-route > div:last-child { text-align: right; }
+.ck-pass-line { display: grid; place-items: center; flex: 1; min-width: 26px; color: var(--ck-blue); border-top: 1px dashed #859dc0; height: 1px; }
+.ck-pass-line svg { background: #fff; transform: translateY(-50%); }
+.ck-pass dl { display: grid; grid-template-columns: 1.05fr 1fr .6fr 1fr; gap: 4px; padding: 0 10px 9px; }
+.ck-pass dt { font-size: 10px; color: var(--ck-muted); }
+.ck-pass dd { font-size: 12px; }
+.ck-pass-stub { border-top: 1px dashed #cdb9d3; padding: 6px; display: grid; place-items: center; }
+.ck-pass-stub i { width: 91px; height: 13px; background: repeating-linear-gradient(90deg,#6b526b 0 1px, transparent 1px 3px,#6b526b 3px 5px,transparent 5px 8px); }
+@keyframes ck-appear { from { opacity: 0; transform: translateY(5px); } }
+@media (prefers-reduced-motion: reduce) { .ck-toast:not([hidden]) { animation: none; } }
+.ck-display { position: relative; margin: 0; container-type: inline-size; }
+.ck-display img { display: block; width: 100%; height: auto; }
+.ck-display figcaption { position: absolute; display: grid; align-content: center; gap: 1px; text-align: center; line-height: 1.2; }
+.ck-flight figcaption { color: #fff; inset: 30% 12% 13%; }
+.ck-flight strong { font-size: clamp(12px, 10cqw, 28px); }
+.ck-flight span { font-size: clamp(8px, 5cqw, 15px); }
+.ck-completion-sign figcaption { color: #704967; inset: 27% 16% 36%; }
+.ck-completion-sign strong { font-size: clamp(12px, 15cqw, 31px); }

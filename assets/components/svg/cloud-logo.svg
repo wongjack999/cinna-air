@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" width="420" height="300">
+ <defs>
+  <linearGradient id="body" x1=".21" x2=".78" y1="0" y2="1"><stop stop-color="#d2f0ff"/><stop offset=".36" stop-color="#91cfff"/><stop offset=".8" stop-color="#59a1de"/><stop offset="1" stop-color="#779bdb"/></linearGradient>
+  <linearGradient id="rim" x2=".45" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+ </defs>
+ <path d="M144 222c-45 0-81-29-81-65 0-34 30-61 70-64 15-29 48-45 85-43 36 2 67 22 77 49 39-10 68 6 68 31 0 19-16 32-39 38 4 32-24 53-64 53-25 0-46-9-60-23-16 15-34 24-56 24Zm-1-36c17 0 32-6 46-21 7-8 19-8 27 0 13 13 27 20 44 20 17 0 30-8 30-17 0-5-2-9-5-14-6-11 1-23 13-24 14-1 28-5 30-9-8-4-22-1-37 5-15 5-29-3-30-16-2-13-20-25-46-26-26-2-49 9-57 28-3 7-11 11-19 11-24 0-41 15-41 33 0 18 19 30 45 30Z" fill="url(#body)" fill-rule="evenodd"/>
+ <path d="M79 145c6-23 26-38 57-38m16-8c19-29 74-43 110-15m57 24c12-1 20 0 25 5" fill="none" stroke="url(#rim)" stroke-width="5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eff5ff">
+<title>Cinna Air · 旅程元件庫</title>
+<link rel="stylesheet" href="component-kit.css">
+<link rel="stylesheet" href="component-gallery.css">
+<script defer src="component-kit.js"></script>
+<script defer src="component-assets.js"></script>
+<script defer src="component-gallery.js"></script>
+</head>
+<body>
+<header class="masthead"><div class="mast-inner"><div class="wordmark"><img src="assets/components/svg/cloud-logo.svg" alt=""> Cinna Air</div><a href="index.html">試玩 Check-in <span aria-hidden="true">↗</span></a></div></header>
+<main class="gallery-shell">
+  <header class="intro">
+    <div>
+      <h1>旅程元件庫</h1>
+      <p>粉彩 3D 場景、角色同道具，加上可直接試用嘅玻璃介面。</p>
+    </div>
+    <img src="assets/components/previews/ground-staff-welcoming.webp" alt="" width="193" height="130">
+  </header>
+  <nav class="filters" aria-label="元件分類">
+    <button type="button" data-category="all" aria-pressed="true">全部</button>
+    <button type="button" data-category="scene" aria-pressed="false">場景</button>
+    <button type="button" data-category="character" aria-pressed="false">角色</button>
+    <button type="button" data-category="prop" aria-pressed="false">道具</button>
+    <button type="button" data-category="ui" aria-pressed="false">UI</button>
+    <button type="button" data-category="decoration" aria-pressed="false">裝飾</button>
+  </nav>
+  <div id="component-sections"></div>
+  <footer class="gallery-footer"><a href="COMPONENTS.md">接入說明及元件 API ↗</a></footer>
+</main>
+<dialog class="gallery-dialog" id="journey-demo" aria-labelledby="journey-heading">
+  <form method="dialog"><h2 id="journey-heading">旅程進度</h2><button type="submit" aria-label="關閉旅程">×</button></form>
+  <ol><li>旅行邀請 <span>已完成</span></li><li>機場報到 <span>進行中</span></li><li>登機與飛行</li><li>抵達首爾</li><li>領取行李及獎勵</li></ol>
+</dialog>
+<dialog class="gallery-dialog" id="boarding-demo" aria-labelledby="boarding-heading">
+  <form method="dialog"><h2 id="boarding-heading">登機證</h2><button type="submit" aria-label="關閉登機證">×</button></form>
+  <div data-pass-demo></div>
+</dialog>
+</body>
+</html>
