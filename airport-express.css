@@ -1,0 +1,138 @@
+.express-gallery, .express-stage {
+  --ex-ink: #3c3254;
+  --ex-muted: #695c7c;
+  --ex-pink: #a84e7c;
+  --ex-ease: cubic-bezier(.2,.75,.28,1);
+  color: var(--ex-ink);
+  font: 400 14px/1.45 "Avenir Next", "PingFang HK", "Noto Sans TC", system-ui, sans-serif;
+}
+.express-gallery *, .express-stage * { box-sizing: border-box; }
+.express-gallery { margin: 0; background: radial-gradient(ellipse at 95% 1%,#fae6f4,transparent 52%),linear-gradient(130deg,#eaf2fe,#fbf8fd 75%); }
+.express-gallery [hidden], .express-stage [hidden] { display: none !important; }
+.express-gallery button, .express-stage button { color: inherit; font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.express-gallery :focus-visible, .express-stage :focus-visible { outline: 2px solid #754d88; outline-offset: 3px; }
+.express-mast { background: #ffffff8c; border-bottom: 1px solid #fff; }
+.express-mast > div, .express-shell { width: min(1100px, calc(100% - 42px)); margin-inline: auto; }
+.express-mast > div { display: flex; align-items: center; justify-content: space-between; min-height: 56px; gap: 12px; }
+.express-mast span { font-size: 18px; font-weight: 500; letter-spacing: -.045em; }
+.express-mast a, .express-guide { display: inline-flex; align-items: center; min-height: 44px; color: var(--ex-muted); text-underline-offset: 3px; }
+.express-heading { padding-block: 24px 19px; }
+.express-heading p { margin: 0 0 2px; color: var(--ex-muted); }
+.express-heading h1 { margin: 0; font-size: clamp(31px,6vw,56px); font-weight: 300; line-height: 1.06; letter-spacing: -.055em; }
+.express-layout { display: grid; grid-template-columns: minmax(280px,.85fr) minmax(0,1.35fr); gap: 22px; align-items: start; padding-bottom: 34px; }
+.express-layout h2 { font-size: 19px; font-weight: 400; margin: 0 0 7px; }
+.express-demo { background: #ffffffa6; border: 1px solid #fff; padding: 11px; border-radius: 23px; box-shadow: 0 7px 26px #6b54751c; }
+.express-stage {
+  container-type: inline-size; position: relative; isolation: isolate; width: 100%; aspect-ratio: 3/4;
+  background: #d7bbca; border-radius: 20px; overflow: hidden;
+}
+.ex-backdrop {
+  position: absolute; z-index: -2; inset: 0;
+  background: url("assets/airport-express/previews/ride-cabin.webp") center / cover no-repeat;
+}
+.ex-backdrop::after { content: ""; position: absolute; inset: 0; opacity: 0; background: radial-gradient(ellipse at 61% 44%,#f4f6ff 0,#e7eeff92 39%,#ecdeff10 72%); }
+[data-state="ride"] .ex-backdrop { animation: ex-road-motion 1.55s var(--ex-ease) both; }
+[data-state="ride"] .ex-backdrop::after { animation: ex-cloud 1.5s var(--ex-ease) both; }
+@keyframes ex-road-motion { 24% { transform: translate(1px,-2px) scale(1.025); } 55% { transform: translate(-1px,1px) scale(1.065); } to { transform: scale(1.12); } }
+@keyframes ex-cloud { 58% { opacity: 0; } 83% { opacity: .76; } 100% { opacity: 0; } }
+.ex-title, .ex-title-sparkles, .ex-driver, .ex-luggage, .ex-phone { position: absolute; display: block; pointer-events: none; }
+.ex-title { width: 63%; height: 24%; object-fit: contain; top: 1%; left: 18.5%; filter: drop-shadow(0 4px 7px #70587a5c); }
+.ex-title-sparkles { width: 14%; right: 14%; top: 2%; }
+.ex-driver { width: 46%; height: 28%; object-fit: contain; left: 1%; top: 23%; filter: drop-shadow(3px 4px 6px #6c476845); }
+.ex-luggage { width: 38%; height: 43%; object-fit: contain; left: 0; bottom: 3.1%; filter: drop-shadow(3px 6px 6px #694b6a5c); }
+.ex-glass {
+  border: 1px solid #ffffffe0;
+  background: #6a638eea;
+  box-shadow: inset 0 1px 0 #fff6,0 5px 15px #56467b37;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ex-glass { background: #695985b3; -webkit-backdrop-filter: blur(13px); backdrop-filter: blur(13px); }
+}
+.ex-audio {
+  position: absolute; top: 3.5%; right: 3%; width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center; padding: 0; color: #fff !important;
+}
+.ex-audio svg { width: 22px; height: 22px; }
+.ex-audio[aria-pressed="true"] .ex-muted, .ex-audio[aria-pressed="false"] .ex-waves { display: none; }
+.ex-speech {
+  position: absolute; top: 30%; right: 9%; z-index: 1; display: grid; gap: 0;
+  padding: 6px 12px; background: #fffafd; border: 1px solid #fff;
+  border-radius: 15px; color: #433761; box-shadow: 0 4px 11px #69557a30;
+  font-size: clamp(11px,3.1cqw,14px); line-height: 1.25;
+}
+.ex-speech strong { font-weight: 500; }
+.ex-speech span { color: #804d74; font-size: .85em; }
+.ex-speech::before { content: ""; position: absolute; top: 61%; right: 100%; border: 7px solid transparent; border-right-color: #fffafd; }
+.ex-route {
+  position: absolute; top: 49%; left: 7%; right: 7%; height: 12%; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1.15fr 1fr; align-items: center; gap: 2px;
+  border-radius: 24px; color: #fff; text-align: center;
+}
+.ex-route > div { display: grid; justify-items: center; align-content: center; gap: 0; font-size: clamp(9px,2.9cqw,12px); }
+.ex-route img { width: min(29px,8cqw); height: min(25px,7cqw); }
+.ex-route .ex-route-center { gap: 4px; white-space: nowrap; }
+.ex-rail { position: relative; display: block; width: 95%; height: 8px; border-bottom: 2px dotted #fcefff; }
+.ex-rail i {
+  position: absolute; left: 5%; bottom: -4px; width: 6px; height: 6px; border-radius: 50%;
+  background: #fff7dd; box-shadow: 0 0 7px 2px #ffe5a0; transition: left 1.45s var(--ex-ease);
+}
+[data-state="ride"] .ex-rail i, [data-state="arrived"] .ex-rail i { left: 91%; }
+.ex-phone {
+  z-index: 1; right: 13%; bottom: 3%; width: 29%;
+  transform: rotate(-10deg); filter: drop-shadow(4px 6px 6px #75547855);
+}
+.ex-phone > img { display: block; width: 100%; height: auto; }
+.ex-phone-content {
+  position: absolute; inset: 20% 17% 17%; display: grid; align-content: start; justify-items: center; gap: 5px;
+  color: #3e5f92; text-align: center; font-size: clamp(9px,3.2cqw,15px);
+}
+.ex-phone-content > span { font-weight: 650; color: #3c6197; }
+.ex-phone-card { display: grid; justify-items: center; gap: 1px; border-radius: 6px; padding: 5px 2px; width: 100%; color: #3d3c65; background: #fff7fd; box-shadow: 0 2px 5px #725b8421; }
+.ex-phone-card strong { font-weight: 600; font-size: .89em; white-space: nowrap; }
+.ex-phone-card small { font-size: .65em; }
+.ex-phone-card i { height: 9px; width: 67%; background: repeating-linear-gradient(90deg,#776285 0 1px,#ffffff 1px 2px,#776285 2px 4px,#ffffff 4px 6px); }
+[data-mode="destination"] .ex-ticket, [data-mode="ticket"] .ex-destination { display: none; }
+.ex-start {
+  position: absolute; z-index: 4; inset: auto 14% 3.6%; min-height: 44px;
+  padding: 6px 12px; border: 2px solid #fff8ed; border-radius: 30px;
+  color: #fff !important; background: linear-gradient(140deg,#b65386,#c95091);
+  box-shadow: 0 0 11px #ffd2ed78, inset 0 1px 5px #fff7; font-size: clamp(14px,4.5cqw,19px) !important;
+}
+.ex-start:hover { filter: brightness(1.07); }
+.ex-start:disabled { opacity: .78; cursor: default; }
+.express-modes { display: flex; gap: 7px; margin-top: 9px; }
+.express-modes button { min-height: 44px; padding: 4px 10px; border: 1px solid #e0d3eb; border-radius: 13px; background: #fff; font-size: 12px; }
+.express-modes [aria-pressed="true"] { color: #fff; background: #705584; border-color: #705584; }
+.express-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+.express-card { overflow: hidden; border: 1px solid #e6dcec; border-radius: 18px; background: #ffffffdb; }
+.express-card-visual {
+  display: grid; place-items: center; height: 132px; overflow: hidden;
+  background: repeating-conic-gradient(#eceffc 0% 25%,#faf5fc 0% 50%) 0 0/16px 16px;
+}
+.express-card-visual img { width: 85%; height: 114px; display: block; object-fit: contain; }
+.express-card-body { padding: 7px 9px 5px; }
+.express-card-body h3 { margin: 0; font-size: 14px; font-weight: 500; }
+.express-card-body code { display: block; font-size: 10px; overflow-wrap: anywhere; color: var(--ex-muted); }
+.express-downloads { display: flex; flex-wrap: wrap; gap: 5px 9px; }
+.express-downloads a { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; color: #704e75; text-underline-offset: 3px; }
+.express-ui { margin-top: 15px; padding: 10px 12px; border: 1px solid #fff; border-radius: 18px; background: #fff8; }
+.express-ui-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px 8px; }
+.express-ui-list p { display: grid; margin: 0; padding: 5px; color: var(--ex-muted); font-size: 12px; }
+.express-ui-list code { color: var(--ex-ink); font-size: 11px; overflow-wrap: anywhere; }
+@media(max-width: 720px) {
+  .express-layout { grid-template-columns: minmax(0,1fr); }
+  .express-mast > div, .express-shell { width: calc(100% - 26px); }
+  .express-demo { width: min(100%,430px); justify-self: center; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .express-stage *, .express-stage *::after { animation: none !important; transition: none !important; }
+}
+[data-state="arrived"] .ex-backdrop {
+  background-image: url("assets/airport-express/previews/airport-exterior.webp");
+}
+[data-state="arrived"] .ex-driver,
+[data-state="arrived"] .ex-luggage,
+[data-state="arrived"] .ex-phone {
+  visibility: hidden;
+}
+[data-state="arrived"] .ex-speech::before { display: none; }

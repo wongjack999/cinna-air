@@ -1,0 +1,8 @@
+Cinna Air 本機預覽
+
+1. 先將 ZIP 完整解壓，保留整個資料夾同入面嘅 assets。
+2. 用 Chrome 打開 index.html，試玩 Cinna Air 整合版 V6。
+3. 用 Chrome 打開 airport-express.html，試玩 Princess Airport Express。
+4. components.html 係元件庫，提供兩個預覽嘅入口。
+
+本機預覽可以離線開啟。換電腦後由初始畫面開始。

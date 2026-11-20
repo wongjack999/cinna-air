@@ -4,75 +4,200 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#bfdef5">
-<title>Cinna Air · 機場報到</title>
+<title>Cinna Air — 整合版 V6</title>
 <link rel="stylesheet" href="check-in.css">
 <script defer src="check-in.js"></script>
 </head>
 <body>
 <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <symbol id="plane" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a1.2 1.2 0 0 0-1.2-1.2h-6l-4.4-7H8.2l2.2 7H5.9L4 8.6H2.3L3.6 12l-1.3 3.4H4l2-2.2h4.4l-2.2 7h2.2l4.4-7h6A1.2 1.2 0 0 0 22 12Z"/></symbol>
-  <symbol id="journey" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H16a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h7.5"/></g></symbol>
   <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4.2 4.2L19 6.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="ticket" viewBox="0 0 24 24"><path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Zm11 2v1m0 2.5v1m0 2.5v1" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="passport" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><rect x="5.5" y="3.5" width="13" height="17" rx="2"/><circle cx="12" cy="10.5" r="3.2"/><path d="M9 10.5h6m-4.4 5.8h2.8"/></g></symbol>
   <symbol id="bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M5.5 8h13l1 12h-15z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></g></symbol>
+  <symbol id="spark" viewBox="0 0 24 24"><path d="M12 2c1.4 6 3.5 8.4 10 10-6.5 1.6-8.6 4-10 10C10.6 16 8.5 13.6 2 12 8.5 10.4 10.6 8 12 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
   <symbol id="close" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
 </svg>
-<main class="game" data-state="before" aria-labelledby="chapter-title">
+<main class="game" data-state="launch" data-scene="invitation" aria-labelledby="chapter-title">
   <header class="topbar">
-    <div class="brand"><span><svg aria-hidden="true"><use href="#plane"/></svg></span>Cinna Air</div>
-    <button class="journey-button glass" type="button" data-open-journey aria-haspopup="dialog"><svg aria-hidden="true"><use href="#journey"/></svg>旅程</button>
+    <div class="brand"><img src="assets/components/previews/hanging-logo-sign.webp" alt="Cinna Air" width="110" height="55"></div>
   </header>
 
-  <section class="itinerary glass" aria-label="航程與旅程進度">
-    <div class="itinerary-heading">
-      <h1 id="chapter-title">機場報到</h1>
-      <span class="chapter-count">第 2 站 <span>·</span> <span class="progress-text" data-progress-text>1 / 5 完成</span></span>
+  <h1 id="chapter-title" class="visually-hidden" tabindex="-1">Cinna Air · 公主購物之旅</h1>
+  <section class="stage" data-stage aria-label="第一身旅程場景">
+    <div class="scenery" aria-hidden="true"></div>
+    <div class="swipe-cue" data-swipe-cue aria-hidden="true">
+      <svg class="swipe-trail" viewBox="0 0 34 86" fill="none"><path d="m8 16 9-9 9 9m-18 13 9-9 9 9M17 42v29" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="swipe-dot"></span>
     </div>
-    <div class="progress" role="progressbar" aria-label="旅程已完成關卡" aria-valuemin="0" aria-valuemax="5" aria-valuenow="1">
-      <i></i><i></i><i></i><i></i><i></i>
+    <section class="invitation-stage" data-invitation aria-label="Cinna Air 邀請函">
+      <img class="invitation-brand" src="assets/airport-express/previews/ride-title.webp" alt="Cinna Air · Princess Shopping Journey">
+      <p class="invitation-teaser" data-teaser hidden>一場專屬嘅公主購物之旅<br>即將啟程 ♡</p>
+      <div class="invitation-package" data-invitation-package hidden>
+        <article class="invitation-letter" data-letter hidden>
+          <span>Special Invitation</span>
+          <h2 tabindex="-1">公主購物之旅</h2>
+          <p class="invitation-route">HKG → ICN <strong data-flight-number>NAT818</strong></p>
+          <ol>
+            <li>揀 <strong data-flight-number>NAT818</strong>，交護照同簽名。完成報到即有 HK$600 購物金。</li>
+            <li>登機後，30 秒內點按星星同蝴蝶結，賺技巧獎金。</li>
+            <li>到首爾後揀一個行李箱，揭曉幸運獎金。</li>
+          </ol>
+        </article>
+        <div class="envelope" aria-hidden="true"><i class="envelope-flap"></i></div>
+      </div>
+      <div class="launch-slider" data-launch>
+        <span class="launch-label" aria-hidden="true">向右滑動開始</span>
+        <button class="launch-thumb" type="button" data-launch-thumb aria-label="開始旅程">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <button class="journey-button" type="button" data-open-letter hidden>打開邀請函 ♡</button>
+      <button class="journey-button" type="button" data-accept-invitation hidden>收下邀請</button>
+    </section>
+
+    <button class="journey-button travel-action" type="button" data-travel hidden></button>
+    <section class="departures glass" data-departures aria-labelledby="departures-title" hidden>
+      <h2 id="departures-title"><svg aria-hidden="true"><use href="#plane"/></svg> Cinna Air Departures</h2>
+      <p id="departure-help">左右滑動翻頁，再點選邀請函上嘅航班。</p>
+      <div class="departure-list" data-flight-slide aria-describedby="departure-help">
+        <div class="departure-head" aria-hidden="true"><span>Flight</span><span>To</span><span>Counter</span></div>
+        <div class="departure-rows" data-flight-rows>
+          <button class="departure-row" type="button" data-flight-row aria-pressed="false"><span></span><span></span><span></span></button>
+          <button class="departure-row" type="button" data-flight-row aria-pressed="false"><span></span><span></span><span></span></button>
+          <button class="departure-row" type="button" data-flight-row aria-pressed="false"><span></span><span></span><span></span></button>
+          <button class="departure-row" type="button" data-flight-row aria-pressed="false"><span></span><span></span><span></span></button>
+          <button class="departure-row" type="button" data-flight-row aria-pressed="false"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+      <div class="departure-pages" aria-label="航班頁數">
+        <button type="button" data-previous-flight aria-label="上一頁航班">←</button>
+        <span aria-live="polite" data-flight-page></span>
+        <button type="button" data-next-flight aria-label="下一頁航班">→</button>
+      </div>
+      <button class="journey-button departure-confirm" type="button" data-pick-flight disabled>確認航班</button>
+      <p class="departure-feedback" role="status" data-flight-feedback></p>
+    </section>
+
+    <div class="checkin-layout">
+      <img class="checkin-balloons" src="assets/components/png/balloons.png" alt="">
+      <div class="counter-staff" data-counter-staff hidden>
+        <picture>
+          <source media="(prefers-reduced-motion: no-preference)" data-clerk-blink>
+          <img src="assets/components/png/ground-staff-cinnamoroll.png" alt="玉桂狗地勤迎賓" draggable="false">
+        </picture>
+      </div>
+      <img class="checkin-counter" src="assets/components/png/checkin-counter.png" alt="">
+      <section class="flight-board" aria-label="航班資料">
+        <img class="flight-board-art" src="assets/components/png/flight-info-board.png" alt="">
+        <dl class="route-chip">
+          <div><dt>航班</dt><dd data-flight-number>NAT818</dd></div>
+          <div><dt>目的地</dt><dd>首爾 ICN</dd></div>
+          <div><dt>起飛（香港）</dt><dd><time data-flight-departure></time></dd></div>
+          <div><dt>狀態</dt><dd data-flight-status>報到中</dd></div>
+        </dl>
+        <button class="route-trigger" type="button" data-open-flight aria-label="查閱登機證" aria-haspopup="dialog" hidden></button>
+      </section>
+      <img class="checkin-logo" src="assets/components/png/hanging-logo-sign.png" alt="Cinna Air">
+      <div class="checkin-sky" aria-hidden="true"></div>
+      <aside class="clerk-greeting glass" data-greeting hidden>
+        <p><strong>歡迎登機 ♡</strong><br>請出示你嘅護照～</p>
+        <button class="journey-button" type="button" data-ready-passport>出示護照</button>
+      </aside>
+      <div class="drop" data-drop aria-hidden="true"><span>放低護照</span></div>
+      <div class="passport" data-passport role="button" tabindex="0" aria-label="拖曳護照到櫃檯，或按 Enter 交護照" hidden>
+        <img src="assets/passport.png" alt="" draggable="false">
+      </div>
+      <div class="checkin-queue" aria-hidden="true">
+        <img class="checkin-rope-shadow" src="assets/components/svg/checkin-rope-shadow.svg" alt="" width="97" height="49">
+        <img class="checkin-rope" src="assets/components/png/checkin-rope-barrier.png" alt="">
+      </div>
     </div>
-    <div class="route" role="group" data-route-summary>
-      <div class="airport"><strong data-route="from"></strong><span data-route="fromCity"></span></div>
-      <div class="flight-line" aria-hidden="true"><span><svg><use href="#plane"/></svg></span></div>
-      <div class="airport"><strong data-route="to"></strong><span data-route="toCity"></span></div>
+    <div class="ticket-machine" data-machine hidden>
+      <div class="machine-slot" aria-hidden="true"></div>
+      <div class="printed-ticket" data-printed-ticket role="button" tabindex="0" aria-label="下拉登機證，或按 Enter 領取">
+        <span class="ticket-brand">Cinna Air</span>
+        <span>HKG <span aria-hidden="true">→</span> ICN</span>
+        <small><span data-passenger-name>Natalie</span> · <span data-flight-number>NAT818</span> · A07 · 2A</small>
+      </div>
     </div>
+    <div class="completion-banner glass" data-completion hidden>
+      <span class="completion-icon" aria-hidden="true"><svg><use href="#check"/></svg></span>
+      <div><strong>報到完成</strong><span>+HK$600 基本購物金</span>
+        <button class="journey-button" type="button" data-board-plane>進入飛機</button>
+      </div>
+    </div>
+    <button class="window-spot" data-window type="button" aria-label="點按飛機窗開始挑戰" hidden><svg aria-hidden="true"><use href="#spark"/></svg></button>
+    <div class="cabin-hud glass" data-cabin-hud hidden>
+      <span><small>剩餘時間</small><strong data-time>30秒</strong></span>
+      <span><small>已收集</small><strong data-catches>0</strong></span>
+    </div>
+    <div class="cabin-targets" data-cabin-targets hidden>
+      <button class="sky-target" type="button" data-target aria-label="收集蝴蝶結或星星" hidden><img alt=""></button>
+    </div>
+    <div class="baggage-picker" role="group" aria-label="選擇一個行李箱" data-baggage hidden>
+      <button class="bag-choice" type="button" data-bag="1" aria-label="選擇粉紅行李箱"><img src="assets/journey/suitcase.webp" alt=""><span>粉紅</span></button>
+      <button class="bag-choice" type="button" data-bag="2" aria-label="選擇粉藍行李箱"><img src="assets/journey/suitcase.webp" alt=""><span>粉藍</span></button>
+      <button class="bag-choice" type="button" data-bag="3" aria-label="選擇香芋紫行李箱"><img src="assets/journey/suitcase.webp" alt=""><span>香芋紫</span></button>
+    </div>
+    <aside class="shopping-pass glass" data-result aria-labelledby="shopping-title" hidden>
+      <p>Princess Shopping Pass</p>
+      <h2 id="shopping-title">Natalie 嘅購物金</h2>
+      <strong class="shopping-total" data-total></strong>
+      <dl><div><dt>報到基本購物金</dt><dd data-base></dd></div><div><dt>機艙技巧獎金</dt><dd data-flight-bonus></dd></div><div><dt>行李幸運獎金</dt><dd data-lucky-bonus></dd></div></dl>
+    </aside>
   </section>
 
-  <section class="stage" data-stage aria-label="第一身機場櫃檯">
-    <div class="drop" data-drop aria-hidden="true"><span>放低護照</span></div>
-    <button class="passport" data-passport type="button" aria-label="遞交護照">
-      <img src="assets/passport.webp" alt="" draggable="false">
-    </button>
-    <span class="stage-success" aria-hidden="true"><svg><use href="#check"/></svg></span>
-  </section>
+  <button class="invitation-pocket glass" type="button" data-invitation-pocket aria-label="打開邀請口袋" aria-haspopup="dialog" disabled hidden>
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <g class="pocket-letter" stroke="currentColor" stroke-width="1.5">
+        <rect x="9.5" y="4.5" width="13" height="15" rx="2" fill="#fff8fc"/>
+        <path d="m10.5 6 5.5 4.5L21.5 6"/>
+      </g>
+      <path d="M5 12.5h22v7.8c0 2.2-1 3.7-3 4.9L16 29l-8-3.8c-2-1.2-3-2.7-3-4.9z" fill="#f7d5e9" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M8.5 15.6h15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2"/>
+    </svg>
+  </button>
+  <dialog class="invitation-pocket-dialog" data-invitation-dialog aria-label="已收下嘅邀請卡">
+    <button class="close glass" type="button" data-close-invitation aria-label="關閉邀請卡"><svg aria-hidden="true"><use href="#close"/></svg></button>
+  </dialog>
 
-  <section class="dock glass" aria-label="報到操作">
-    <div class="mission" role="status" aria-live="polite" aria-atomic="true">
-      <span class="mission-icon" aria-hidden="true"><svg class="pending"><use href="#passport"/></svg><svg class="complete"><use href="#check"/></svg></span>
-      <div><h2 data-status>出示護照</h2><p data-hint>點擊護照，或拖到櫃檯。</p></div>
-    </div>
-    <div class="reward">
-      <svg aria-hidden="true"><use href="#bag"/></svg>
-      <span>基本購物金 <small>完成旅程後領取</small></span>
-      <strong data-reward></strong>
-    </div>
-    <button class="cta" type="button" data-action>
-      <span data-action-label>遞交護照</span><svg aria-hidden="true"><use href="#arrow"/></svg>
-    </button>
-  </section>
-
-  <dialog class="sheet glass" data-journey aria-labelledby="journey-title">
-    <div class="sheet-heading"><h2 id="journey-title">旅程進度</h2><button class="close glass" type="button" data-close aria-label="關閉旅程"><svg aria-hidden="true"><use href="#close"/></svg></button></div>
-    <ol class="journey-list">
-      <li class="done"><span>01</span><strong>旅行邀請</strong><small>已完成</small></li>
-      <li class="current" data-check-in-step aria-current="step"><span>02</span><strong>機場報到</strong><small data-check-in-status>進行中</small></li>
-      <li><span>03</span><strong>登機與飛行</strong><small data-next-status>待解鎖</small></li>
-      <li><span>04</span><strong>抵達首爾</strong></li>
-      <li><span>05</span><strong>領取行李及獎勵</strong></li>
-    </ol>
-    <button class="reset" type="button" data-reset hidden>重新體驗報到</button>
+  <dialog class="sheet flight-sheet signature-sheet glass" data-signature aria-labelledby="signature-title">
+    <p lang="en">Cinna Air · Arrival Card</p>
+    <h2 id="signature-title">旅客入境資料卡</h2>
+    <dl class="arrival-flight">
+      <div><dt>航班 Flight</dt><dd data-flight-number>NAT818</dd></div>
+      <div><dt>目的地 Destination</dt><dd>首爾 ICN</dd></div>
+    </dl>
+    <form class="arrival-details" data-arrival-details>
+      <label class="signature-label">護照姓名 <small lang="en">Full name as shown on passport</small>
+        <input type="text" name="passenger" data-passenger-input maxlength="60" required autocomplete="off">
+      </label>
+      <label class="signature-label">入境目的 <small lang="en">Purpose of visit</small>
+        <span class="arrival-select">
+          <select name="purpose" required>
+            <option value="">請選擇</option>
+            <option value="holiday">旅遊 Holiday</option>
+            <option value="shopping-for-husband">買野俾老公 Weeee</option>
+            <option value="business">商務 Business</option>
+            <option value="transit">過境 Transit</option>
+            <option value="other">其他 Other</option>
+          </select>
+        </span>
+      </label>
+      <button class="journey-button" type="submit">下一步：簽名</button>
+    </form>
+    <section class="arrival-signature" data-signature-fields hidden>
+      <h3>旅客簽名 <small lang="en">Traveller signature</small></h3>
+      <p>確認所填資料後，請在下方簽名。</p>
+      <canvas width="720" height="240" data-signature-pad aria-label="用手指或滑鼠在此簽名"></canvas>
+      <div class="signature-actions">
+        <button type="button" class="signature-clear" data-edit-details>返回資料</button>
+        <button type="button" class="signature-clear" data-clear-signature>清除</button>
+        <button type="button" class="journey-button" data-confirm-signature disabled>確認簽名</button>
+      </div>
+    </section>
   </dialog>
 
   <dialog class="sheet glass" id="boarding-dialog" data-boarding aria-labelledby="boarding-title">
@@ -80,7 +205,7 @@
       <div><p class="issued-label"><svg aria-hidden="true"><use href="#check"/></svg>報到完成</p><h2 id="boarding-title">登機證</h2></div>
       <button class="close glass" type="button" data-close aria-label="關閉登機證"><svg aria-hidden="true"><use href="#close"/></svg></button>
     </div>
-    <article class="pass" aria-label="Natalie 嘅登機證">
+    <article class="pass" aria-label="旅客登機證">
       <div class="pass-brand">Cinna Air <svg aria-hidden="true"><use href="#plane"/></svg></div>
       <div class="route" role="group" data-route-summary>
         <div class="airport"><strong data-route="from"></strong><span data-route="fromCity"></span></div>
@@ -88,11 +213,10 @@
         <div class="airport"><strong data-route="to"></strong><span data-route="toCity"></span></div>
       </div>
       <dl class="pass-details">
-        <div><dt>旅客</dt><dd>Natalie</dd></div><div><dt>登機閘口</dt><dd>A07</dd></div><div><dt>座位</dt><dd>2A</dd></div><div><dt>艙等</dt><dd>公主艙</dd></div>
+        <div><dt>旅客</dt><dd data-passenger-name>Natalie</dd></div><div><dt>航班</dt><dd data-flight-number>NAT818</dd></div><div><dt>登機閘口</dt><dd>A07</dd></div><div><dt>座位</dt><dd>2A</dd></div><div><dt>艙等</dt><dd>公主艙</dd></div>
       </dl>
       <div class="stub" aria-hidden="true"><i></i></div>
     </article>
-    <button class="cta" type="button" data-close>完成<svg aria-hidden="true"><use href="#check"/></svg></button>
   </dialog>
 </main>
 </body>

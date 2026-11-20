@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f9f1fe">
+<title>Cinna Air · Princess Airport Express 備選</title>
+<link rel="stylesheet" href="airport-express.css">
+<script defer src="airport-express-assets.js"></script>
+<script defer src="airport-express.js"></script>
+</head>
+<body class="express-gallery">
+<header class="express-mast"><div><span>Cinna Air</span><a href="#express-assets">查看素材 ↓</a></div></header>
+<main class="express-shell">
+  <header class="express-heading"><p>備選啟動頁</p><h1>Princess Airport Express</h1></header>
+  <div class="express-layout">
+    <section class="express-demo" aria-labelledby="preview-title">
+      <h2 id="preview-title">組合預覽</h2>
+      <div class="express-stage" data-express data-state="ready">
+        <div class="ex-backdrop" aria-hidden="true"></div>
+        <img class="ex-title" src="assets/airport-express/previews/ride-title.webp" alt="Cinna Air · Princess Shopping Journey">
+        <img class="ex-title-sparkles" src="assets/airport-express/svg/ride-sparkles.svg" alt="">
+        <button type="button" class="ex-audio ex-glass" data-audio aria-label="預覽音效" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 5 5.5 9H3v6h2.5l4.5 4z" fill="currentColor"/><path class="ex-waves" d="M13 9a4.3 4.3 0 0 1 0 6m3-9a8.5 8.5 0 0 1 0 12" stroke-linecap="round"/><path class="ex-muted" d="m14 10 5 5m0-5-5 5" stroke-linecap="round"/></svg>
+        </button>
+        <img class="ex-driver" src="assets/airport-express/png/driver.png" alt="戴住藍帽嘅玉桂狗司機">
+        <div class="ex-speech" role="status"><strong data-speech>出發去機場！</strong><span data-speech-extra>Let’s go! ♡</span></div>
+        <div class="ex-route ex-glass" aria-label="搭車前往機場再辦理報到">
+          <div><img src="assets/airport-express/svg/ride-car.svg" alt=""><span>搭車</span></div>
+          <div class="ex-route-center"><span class="ex-rail" aria-hidden="true"><i></i></span><span data-ride-status>準備出發</span></div>
+          <div><img src="assets/airport-express/svg/ride-plane.svg" alt=""><span>Check-in</span></div>
+        </div>
+        <img class="ex-luggage" src="assets/airport-express/previews/ride-suitcase.webp" alt="" aria-hidden="true">
+        <div class="ex-phone" data-phone data-mode="destination">
+          <img src="assets/airport-express/previews/ride-phone.webp" alt="" aria-hidden="true">
+          <div class="ex-phone-content">
+            <span>Cinna Air</span>
+            <div class="ex-phone-card ex-destination"><small>Destination</small><strong>HKG Airport</strong></div>
+            <div class="ex-phone-card ex-ticket"><small>BOARDING PASS</small><strong>HKG → ICN</strong><i aria-hidden="true"></i></div>
+          </div>
+        </div>
+        <button class="ex-start" type="button" data-start>Start Journey ♡</button>
+      </div>
+      <div class="express-modes" aria-label="手機內容">
+        <button type="button" data-mode-choice="destination" aria-pressed="true">機場目的地</button>
+        <button type="button" data-mode-choice="ticket" aria-pressed="false">登機證示意</button>
+      </div>
+    </section>
+    <section id="express-assets" aria-labelledby="asset-title">
+      <h2 id="asset-title">元件</h2>
+      <div class="express-grid" data-art-assets></div>
+      <section class="express-ui" aria-labelledby="ui-title">
+        <h2 id="ui-title">可重用 UI</h2>
+        <div class="express-ui-list">
+          <p><code>ex-speech</code><span>司機對白</span></p>
+          <p><code>ex-route</code><span>叫車進度</span></p>
+          <p><code>ex-phone-card</code><span>目的地／票面</span></p>
+          <p><code>ex-audio</code><span>音效開關</span></p>
+          <p><code>ex-start</code><span>Start Journey</span></p>
+          <p><code>ex-backdrop</code><span>抵達過場</span></p>
+        </div>
+        <a class="express-guide" href="AIRPORT-EXPRESS.md">查看接入說明 ↗</a>
+      </section>
+    </section>
+  </div>
+</main>
+</body>
+</html>

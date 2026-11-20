@@ -163,7 +163,7 @@
         preview.append(overlay);
       } else {
         const image = new Image();
-        image.src = 'assets/components/previews/' + id + '.webp';
+        image.src = 'assets/components/' + (group === 'character' ? 'png/' + id + '.png' : 'previews/' + id + '.webp');
         image.alt = title;
         image.loading = 'lazy';
         preview.append(image);
